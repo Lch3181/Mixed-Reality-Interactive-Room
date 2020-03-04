@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnvironmentSetup : MonoBehaviour
 {
     public Text cornerPosition;
+    public GameObject canvas;
     List<Vector3> corners;
     Vector3 rPosition;
     Quaternion rRotation;
@@ -15,14 +16,15 @@ public class EnvironmentSetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvas.Enabled = true;
         corners = new List<Vector3>();
         cornerPosition.text = "";
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        OVRInput.FixedUpdate();
+        OVRInput.Update();
 
         if (OVRInput.IsControllerConnected(OVRInput.Controller.RTouch))
         {
@@ -40,14 +42,15 @@ public class EnvironmentSetup : MonoBehaviour
     void GetFourCorners()
     {
         Vector3 position = new Vector3(rPosition.x, rPosition.y, rPosition.z);
-        Debug.Log(OVRInput.Get(OVRInput.Axis1D.Any));
-        if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.75f && clicks == 0)
+        //Debug.Log(OVRInput.Get(OVRInput.Axis1D.Any));
+        if (OVRInput.Get(OVRInput.Axis1D.Any) > 0.75f && clicks == 0)
         {
             clicks++;
 
             corners.Add(position);
-            cornerPosition.text += position.ToString() + "\n";
-            Debug.Log(position.ToString());
+            //cornerPosition.text += position.ToString() + "\n";
+            cornerPosition.text += ("loolooloo");
+            //Debug.Log(position.ToString());
         }
 
         if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) <= 0.1f)
