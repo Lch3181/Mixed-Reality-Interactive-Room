@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class EnvironmentSetup : MonoBehaviour
 {
     public Text cornerPosition;
-    public GameObject canvas;
     List<Vector3> corners;
     Vector3 rPosition;
     Quaternion rRotation;
@@ -16,7 +15,6 @@ public class EnvironmentSetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canvas.Enabled = true;
         corners = new List<Vector3>();
         cornerPosition.text = "";
     }
@@ -28,8 +26,8 @@ public class EnvironmentSetup : MonoBehaviour
 
         if (OVRInput.IsControllerConnected(OVRInput.Controller.RTouch))
         {
-            GetOVRControllerPosition();
-            GetFourCorners();
+            //GetOVRControllerPosition();
+            //GetFourCorners();
         }
     }
 
