@@ -51,7 +51,6 @@ public class TvRemote : MonoBehaviour
         tvDisplay = tvScreen.GetComponent<VideoPlayer>();
         tvSpeakers = tvScreen.GetComponent<AudioSource>();
     }
-    
 
     public void ButtonPressed(string name)
     {
@@ -60,7 +59,6 @@ public class TvRemote : MonoBehaviour
             tvDisplay = tvScreen.GetComponent<VideoPlayer>();
             tvSpeakers = tvScreen.GetComponent<AudioSource>();
         }
-        Debug.Log(name);
         if (name.Contains("Power"))
         {
             PowerButton();

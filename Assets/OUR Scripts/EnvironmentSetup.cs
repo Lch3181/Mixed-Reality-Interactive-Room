@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnvironmentSetup : MonoBehaviour
 {
+    public bool modify = false;
     public Text cornerPosition;
     List<Vector3> corners;
     Vector3 rPosition;
@@ -29,6 +30,12 @@ public class EnvironmentSetup : MonoBehaviour
             //GetOVRControllerPosition();
             //GetFourCorners();
         }
+    }
+
+    public void ChangeMode(bool modify)
+    {
+        this.modify = modify;
+        Debug.Log("modify=" + modify);
     }
 
     void GetOVRControllerPosition()

@@ -13,6 +13,12 @@ public class VRLever : MonoBehaviour
     Vector3 initLeverPos;
     Vector3 initHandPos;
     MeshRenderer handleMesh;
+    
+    [SerializeField]
+    ModePanel modePanel;
+
+    public enum FunctionType { ButtonReliant, ActivateMode }
+    public FunctionType functionType = FunctionType.ButtonReliant;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +30,32 @@ public class VRLever : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandLogic();
+    }
+
+    public void LeverIsDown()
+    {
+        switch(functionType)
+        {
+            case FunctionType.ButtonReliant:
+                break;
+            case FunctionType.ActivateMode:
+                VRActions.ActivateMode(modePanel);
+                break;
+        }
+    }
+
+    private void HandLogic()
+    {
         if (onLever)
         {
-            if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+            OVRInput.Controller hand = VRActions.GetHandByButton(OVRInput.Button.PrimaryHandTrigger);
+            if (hand != OVRInput.Controller.None)
             {
                 if (!pullingLever)
                 {
                     pullingLever = true;
-                    initHandPos = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
+                    initHandPos = OVRInput.GetLocalControllerPosition(hand);
                     handleMesh.material.color = Color.yellow;
                 }
 
@@ -41,7 +65,7 @@ public class VRLever : MonoBehaviour
                 }
                 else
                 {
-                    MoveLever();
+                    MoveLever(hand);
                 }
             }
             else if (pullingLever)
@@ -80,13 +104,14 @@ public class VRLever : MonoBehaviour
         }
     }
 
-    private void MoveLever()
+    private void MoveLever(OVRInput.Controller hand)
     {
         Vector3 newPosition = transform.position;
-        newPosition.y = initLeverPos.y - (initHandPos.y - OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch).y);
+        newPosition.y = initLeverPos.y - (initHandPos.y - OVRInput.GetLocalControllerPosition(hand).y);
         if (newPosition.y <= initLeverPos.y - 0.2f)
         {
             newPosition.y = initLeverPos.y - 0.2f;
+            LeverIsDown();
             leverPulled = true;
         }
         else if (newPosition.y > initLeverPos.y)

@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class VRButton : MonoBehaviour
 {
     [SerializeField]
+    GameObject FunctionObject;
+
+    [SerializeField]
     VRLever simLever;
     [SerializeField]
     TvRemote tvRemote;
+    [SerializeField]
+    ModePanel modePanel;
 
-    public enum FunctionType { ResetScene, TvButton }
+    public enum FunctionType { ResetScene, TvButton, ModePanel }
     public FunctionType functionType = FunctionType.ResetScene;
 
     //check if lever is pulled if one exists
@@ -30,25 +34,6 @@ public class VRButton : MonoBehaviour
         return false;
     }
 
-    private void ResetScene()
-    {
-        if (LeverIsPulled(simLever))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-        }
-    }
-
-    private void TVButton(Collider other)
-    {
-        if (tvRemote != null)
-        {
-            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
-            {
-                tvRemote.ButtonPressed(this.name);
-            }
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -56,10 +41,16 @@ public class VRButton : MonoBehaviour
             switch(functionType)
             {
                 case FunctionType.ResetScene:
-                    ResetScene();
+                    if (LeverIsPulled(simLever))
+                    {
+                        VRActions.ResetScene();
+                    }
                     break;
                 case FunctionType.TvButton:
-                    TVButton(other);
+                    VRActions.TVButton(tvRemote, name);
+                    break;
+                case FunctionType.ModePanel:
+                    VRActions.ChangeMode(modePanel, name);
                     break;
             }
         }
