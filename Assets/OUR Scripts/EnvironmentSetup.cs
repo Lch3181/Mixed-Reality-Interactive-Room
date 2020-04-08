@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class EnvironmentSetup : MonoBehaviour
 {
+    public GameObject Environment;
     public bool modify = false;
     public Text cornerPosition;
     List<Vector3> corners;
-    Vector3 rPosition;
-    Quaternion rRotation;
-
-    int clicks = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +24,11 @@ public class EnvironmentSetup : MonoBehaviour
 
         if (OVRInput.IsControllerConnected(OVRInput.Controller.RTouch))
         {
-            //GetOVRControllerPosition();
-            //GetFourCorners();
+            if (true) //(modify)
+            {
+                SetFloorLevel();
+                SetRoomRotation();
+            }
         }
     }
 
@@ -38,29 +38,60 @@ public class EnvironmentSetup : MonoBehaviour
         Debug.Log("modify=" + modify);
     }
 
-    void GetOVRControllerPosition()
+    void SetFloorLevel()
     {
-        rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-        rRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
+        if (OVRInput.Get(OVRInput.Button.One)) //Right Button A
+        {
+            Vector3 rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+            //set floor height
+            Environment.transform.position = new Vector3(Environment.transform.position.x, rPosition.y + 0.4f, Environment.transform.position.z);
+        }
     }
 
-    void GetFourCorners()
+    void SetRoomRotation()
     {
-        Vector3 position = new Vector3(rPosition.x, rPosition.y, rPosition.z);
-        //Debug.Log(OVRInput.Get(OVRInput.Axis1D.Any));
-        if (OVRInput.Get(OVRInput.Axis1D.Any) > 0.75f && clicks == 0)
+        Vector3 lPosition = new Vector3(0, 0, 0);
+        Vector3 rPosition = new Vector3(0, 0, 0);
+        if (OVRInput.Get(OVRInput.Button.Four)) //Left Button B
         {
-            clicks++;
-
-            corners.Add(position);
-            //cornerPosition.text += position.ToString() + "\n";
-            cornerPosition.text += ("loolooloo");
-            //Debug.Log(position.ToString());
+            lPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
+        }
+        if (OVRInput.Get(OVRInput.Button.Two)) //Right Button B
+        {
+            rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+        }
+        if (lPosition != new Vector3(0,0,0) && rPosition != new Vector3(0, 0, 0))
+        {
+            Vector3 intersect = Intersect(lPosition, new Vector3(0, 0, 0), rPosition, new Vector3(0, 0, 0));
+            Debug.Log(intersect);
+            //set corner
+            Environment.transform.position = new Vector3(lPosition.x + 0.05f, Environment.transform.position.y, rPosition.z - 0.05f);
         }
 
-        if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) <= 0.1f)
+    }
+
+    public static Vector3 Intersect(Vector3 line1V1, Vector3 line1V2, Vector3 line2V1, Vector3 line2V2)
+    {
+        //Line1
+        float A1 = line1V2.z - line1V1.z;
+        float B1 = line1V2.x - line1V1.x;
+        float C1 = A1 * line1V1.x + B1 * line1V1.z;
+
+        //Line2
+        float A2 = line2V2.z - line2V1.z;
+        float B2 = line2V2.x - line2V1.x;
+        float C2 = A2 * line2V1.x + B2 * line2V1.z;
+
+        float det = A1 * B2 - A2 * B1;
+        if (det == 0)
         {
-            clicks = 0;
+            return new Vector3(0, 0, 0);//parallel lines
+        }
+        else
+        {
+            float x = (B2 * C1 - B1 * C2) / det;
+            float y = (A1 * C2 - A2 * C1) / det;
+            return new Vector3(x, y, 0);
         }
     }
 }
