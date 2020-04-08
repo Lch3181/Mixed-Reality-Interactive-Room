@@ -22,6 +22,9 @@ using UnityEngine;
 /// </summary>
 public class OVRGrabbable : MonoBehaviour
 {
+    public enum GrabWhen { Normal, MovementMode }
+    public GrabWhen whenToGrab = GrabWhen.Normal;
+
     [SerializeField]
     protected bool m_allowOffhandGrab = true;
     [SerializeField]
@@ -114,6 +117,12 @@ public class OVRGrabbable : MonoBehaviour
 	/// </summary>
 	virtual public void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
+        if (whenToGrab == GrabWhen.MovementMode)
+        {
+            if (PlayerPrefs.GetInt("mode") != 1) {
+                return;
+            }
+        }
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -124,6 +133,14 @@ public class OVRGrabbable : MonoBehaviour
 	/// </summary>
 	virtual public void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
+        if (whenToGrab == GrabWhen.MovementMode)
+        {
+            Debug.Log(PlayerPrefs.GetInt("mode"));
+            if (PlayerPrefs.GetInt("mode") != 1)
+            {
+                return;
+            }
+        }
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.isKinematic = m_grabbedKinematic;
         rb.velocity = linearVelocity;
@@ -155,6 +172,14 @@ public class OVRGrabbable : MonoBehaviour
 
     void OnDestroy()
     {
+        if (whenToGrab == GrabWhen.MovementMode)
+        {
+            Debug.Log(PlayerPrefs.GetInt("mode"));
+            if (PlayerPrefs.GetInt("mode") != 1)
+            {
+                return;
+            }
+        }
         if (m_grabbedBy != null)
         {
             // Notify the hand to release destroyed grabbables

@@ -139,6 +139,14 @@ namespace OculusSampleFramework
 
         protected override void GrabBegin()
         {
+            if (grabbedObject.whenToGrab == OVRGrabbable.GrabWhen.MovementMode)
+            {
+                Debug.Log(PlayerPrefs.GetInt("mode"));
+                if (PlayerPrefs.GetInt("mode") != 1)
+                {
+                    return;
+                }
+            }
             DistanceGrabbable closestGrabbable = m_target;
             Collider closestGrabbableCollider = m_targetCollider;
 
