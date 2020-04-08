@@ -27,6 +27,7 @@ public class EnvironmentSetup : MonoBehaviour
             if (true) //(modify)
             {
                 SetFloorLevel();
+                SetRoomCorner();
                 SetRoomRotation();
             }
         }
@@ -44,11 +45,23 @@ public class EnvironmentSetup : MonoBehaviour
         {
             Vector3 rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
             //set floor height
-            Environment.transform.position = new Vector3(Environment.transform.position.x, rPosition.y + 0.4f, Environment.transform.position.z);
+            Environment.transform.position = new Vector3(Environment.transform.position.x, rPosition.y - 0.1f, Environment.transform.position.z);
         }
     }
 
     void SetRoomRotation()
+    {
+        if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
+        {
+            Environment.transform.Rotate(0, Environment.transform.rotation.y - 0.5f, 0, Space.World);
+        }
+        else if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
+        {
+            Environment.transform.Rotate(0, Environment.transform.rotation.y + 0.5f, 0, Space.World);
+        }
+    }
+
+    void SetRoomCorner()
     {
         Vector3 lPosition = new Vector3(0, 0, 0);
         Vector3 rPosition = new Vector3(0, 0, 0);
