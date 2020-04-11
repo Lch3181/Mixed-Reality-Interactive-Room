@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class EnvironmentSetup : MonoBehaviour
 {
     public GameObject Environment;
+    public GameObject Room;
     public bool modify = false;
     public Text cornerPosition;
-    List<Vector3> corners;
+    private bool RoomSpawned = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        corners = new List<Vector3>();
-        cornerPosition.text = "";
+
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class EnvironmentSetup : MonoBehaviour
             {
                 SetFloorLevel();
                 SetRoomCorner();
-                SetRoomRotation();
+                //SetRoomRotation();
             }
         }
     }
@@ -46,6 +47,12 @@ public class EnvironmentSetup : MonoBehaviour
             Vector3 rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
             //set floor height
             Environment.transform.position = new Vector3(Environment.transform.position.x, rPosition.y - 0.1f, Environment.transform.position.z);
+            //spawn room on first time
+            if (!RoomSpawned)
+            {
+                SpawnRoom(new Vector3(rPosition.x, Environment.transform.position.y, rPosition.z));
+                RoomSpawned = true;
+            }
         }
     }
 
@@ -75,36 +82,14 @@ public class EnvironmentSetup : MonoBehaviour
         }
         if (lPosition != new Vector3(0,0,0) && rPosition != new Vector3(0, 0, 0))
         {
-            Vector3 intersect = Intersect(lPosition, new Vector3(0, 0, 0), rPosition, new Vector3(0, 0, 0));
-            Debug.Log(intersect);
             //set corner
-            Environment.transform.position = new Vector3(lPosition.x + 0.05f, Environment.transform.position.y, rPosition.z - 0.05f);
+            //Environment.transform.position = new Vector3(lPosition.x + 0.05f, Environment.transform.position.y, rPosition.z - 0.05f);
         }
 
     }
 
-    public static Vector3 Intersect(Vector3 line1V1, Vector3 line1V2, Vector3 line2V1, Vector3 line2V2)
+    void SpawnRoom(Vector3 pos)
     {
-        //Line1
-        float A1 = line1V2.z - line1V1.z;
-        float B1 = line1V2.x - line1V1.x;
-        float C1 = A1 * line1V1.x + B1 * line1V1.z;
-
-        //Line2
-        float A2 = line2V2.z - line2V1.z;
-        float B2 = line2V2.x - line2V1.x;
-        float C2 = A2 * line2V1.x + B2 * line2V1.z;
-
-        float det = A1 * B2 - A2 * B1;
-        if (det == 0)
-        {
-            return new Vector3(0, 0, 0);//parallel lines
-        }
-        else
-        {
-            float x = (B2 * C1 - B1 * C2) / det;
-            float y = (A1 * C2 - A2 * C1) / det;
-            return new Vector3(x, y, 0);
-        }
+        Environment = Instantiate(Room, pos, Quaternion.identity) as GameObject;
     }
 }
