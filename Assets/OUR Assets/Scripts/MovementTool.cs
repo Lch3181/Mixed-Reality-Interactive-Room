@@ -6,6 +6,8 @@ public class MovementTool : MonoBehaviour
 {
     [SerializeField]
     GameObject theClaw;
+
+    Vector3 initPosit;
     
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,7 @@ public class MovementTool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -25,8 +27,13 @@ public class MovementTool : MonoBehaviour
         {
             if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
-                other.transform.position = theClaw.transform.position;
-                other.transform.rotation = theClaw.transform.rotation;
+                Debug.Log("Got it");
+                Rigidbody otherRb = other.GetComponent<Rigidbody>();
+                if (otherRb != null)
+                {
+                    otherRb.isKinematic = true;
+                }
+                other.transform.position = new Vector3(initPosit.x + (initPosit.x - theClaw.transform.position.x), theClaw.transform.position.y, theClaw.transform.position.z);
             }
         }
     }

@@ -174,7 +174,6 @@ public class OVRGrabbable : MonoBehaviour
     {
         if (whenToGrab == GrabWhen.MovementMode)
         {
-            Debug.Log(PlayerPrefs.GetInt("mode"));
             if (PlayerPrefs.GetInt("mode") != 1)
             {
                 return;

@@ -36,9 +36,18 @@ public class VRButton : MonoBehaviour
         return false;
     }
 
+    private bool ButtonOneIsPushed()
+    {
+        if (OVRInput.Get(OVRInput.Button.One))
+        {
+            return true;
+        }
+        return false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight"))
+        if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight") || other.CompareTag("Player"))
         {
             switch(functionType)
             {
@@ -52,7 +61,10 @@ public class VRButton : MonoBehaviour
                     VRActions.TVButton(tvRemote, name);
                     break;
                 case FunctionType.BoomboxButton:
-                    VRActions.BoomboxButton(boombox);
+                    if (ButtonOneIsPushed())
+                    {
+                        VRActions.BoomboxButton(boombox);
+                    }
                     break;
                 case FunctionType.ModePanel:
                     VRActions.ChangeMode(modePanel, name);
