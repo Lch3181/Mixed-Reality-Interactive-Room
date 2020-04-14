@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Environment: {fileID: 700258447}
-  Room: {fileID: 3922584736327482200, guid: 8a0296b99099fea49845a7d0ef05e011, type: 3}
+  Room: {fileID: 1220715066}
   modify: 0
   cornerPosition: {fileID: 0}
 --- !u!4 &700258450
@@ -675,8 +675,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.66909e+22, y: 0.0000000026516438, z: 0.000000013341426,
-    w: 0.00000004246722}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -3.4925613}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -945,6 +944,12 @@ PrefabInstance:
 --- !u!4 &1220715065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7c6bfd531016040459bb63f819697187,
+    type: 3}
+  m_PrefabInstance: {fileID: 1220715064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1220715066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 7c6bfd531016040459bb63f819697187,
     type: 3}
   m_PrefabInstance: {fileID: 1220715064}
   m_PrefabAsset: {fileID: 0}

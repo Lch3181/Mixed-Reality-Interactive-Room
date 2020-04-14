@@ -3,7 +3,11 @@ guid: 3a2e9a05518cf2149b0b1eaa1f1098a3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - moveTool: {fileID: 7595127671116168902, guid: 03bacb90285b2524c8257debbcac0882,
+      type: 3}
+  - styleTool: {instanceID: 0}
+  - measurementTool: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -484,7 +484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641564622374149564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 13.333332, z: 2.8571427}
   m_Children:
   - {fileID: 3806313261849550217}
@@ -659,6 +659,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &931607053523040947
@@ -872,6 +873,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &1074450906300803185
@@ -1145,7 +1147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561350787075458380}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.44099993, y: 0.33399898, z: -0.54}
+  m_LocalPosition: {x: -0.059, y: 0.33399898, z: -0.045}
   m_LocalScale: {x: 0.125, y: 0.071428575, z: 0.06666665}
   m_Children: []
   m_Father: {fileID: 5685814461127414633}
@@ -1740,6 +1742,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &2348293238710774223
@@ -1910,6 +1913,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &2412692600505939718
@@ -2501,6 +2505,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &2924381578388459117
@@ -2577,6 +2582,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &3057592987020984754
@@ -3763,7 +3769,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4461083161058698499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3241375180826736462}
@@ -4461,10 +4467,11 @@ GameObject:
   - component: {fileID: 5685814461127414627}
   - component: {fileID: 5685814461127414628}
   - component: {fileID: 5685814461127414629}
-  - component: {fileID: 5685814461127414630}
   - component: {fileID: 5685814461127414631}
   - component: {fileID: 5685814461127414632}
   - component: {fileID: 4128791514205427719}
+  - component: {fileID: 894455181673636956}
+  - component: {fileID: 6583684753302059576}
   m_Layer: 0
   m_Name: TVRemote
   m_TagString: tvremote
@@ -4480,7 +4487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5685814461127414634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.075, z: 0.35}
   m_Children:
   - {fileID: 1152488570014001855}
@@ -4775,20 +4782,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!64 &5685814461127414630
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5685814461127414634}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &5685814461127414631
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4820,8 +4813,9 @@ MonoBehaviour:
   m_allowOffhandGrab: 1
   m_snapPosition: 0
   m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints: []
+  m_snapOffset: {fileID: 5685814461127414633}
+  m_grabPoints:
+  - {fileID: 6583684753302059576}
 --- !u!114 &4128791514205427719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4834,8 +4828,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655242f412100564baef0b662b124286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channel: 0
   music: 0
+  channels: []
+  favIndex1: 0
+  favIndex2: 0
+  favIndex3: 0
   tvScreen: {fileID: 0}
   tvShade: {fileID: 0}
   powerButton: {fileID: 8699642980855305988}
@@ -4849,6 +4846,31 @@ MonoBehaviour:
   channelDown: {fileID: 1061345163023845970}
   volumeUp: {fileID: 2361219400022310224}
   volumeDown: {fileID: 2293338875885363984}
+--- !u!114 &894455181673636956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685814461127414634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d918838def766a94fbc8359f327b668f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6583684753302059576
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685814461127414634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 0.75, z: 0.75}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5688032523421339346
 GameObject:
   m_ObjectHideFlags: 0
@@ -6047,6 +6069,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &6324702127550840005
@@ -7116,6 +7139,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &7529937572957605474
@@ -7702,6 +7726,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &8084809617847175663
@@ -7778,6 +7803,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &8137941567339593231
@@ -9222,6 +9248,7 @@ MonoBehaviour:
   FunctionObject: {fileID: 0}
   simLever: {fileID: 0}
   tvRemote: {fileID: 4128791514205427719}
+  boombox: {fileID: 0}
   modePanel: {fileID: 0}
   functionType: 1
 --- !u!1 &8699650120976106638

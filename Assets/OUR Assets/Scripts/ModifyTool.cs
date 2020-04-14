@@ -6,7 +6,12 @@ public class ModifyTool : MonoBehaviour
 {
     ModifyMode mode;
 
-    MovementTool mover;
+    [SerializeField]
+    GameObject moveTool;
+    [SerializeField]
+    GameObject styleTool;
+    [SerializeField]
+    GameObject measurementTool;
 
     Vector3 defaultSize;
 
@@ -35,7 +40,7 @@ public class ModifyTool : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("PlayerRight"))
+        if (other.CompareTag("PlayerRight"))
         {
             ToolHover();
         }
@@ -43,12 +48,14 @@ public class ModifyTool : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight"))
+        if (other.CompareTag("PlayerRight") && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
         {
             if (name.Contains("MovementTool"))
             {
-
                 mode.MovementMode();
+                GameObject movementTool = Instantiate(moveTool, other.transform, false);
+                movementTool.transform.localScale = Vector3.one * 4;
+                //movementTool.transform.localPosition = new Vector3(-0.25f, -0.5f, -1);
             }
             else if (name.Contains("StyleTool"))
             {

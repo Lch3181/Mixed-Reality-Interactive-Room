@@ -13,8 +13,7 @@ public class ModePanel : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        modify = false;
+    {        modify = false;
         modifyLed.material.color = Color.black;
         enjoyLed.material.color = Color.green;
     }

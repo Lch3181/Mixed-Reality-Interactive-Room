@@ -36,11 +36,21 @@ public class VRButton : MonoBehaviour
         return false;
     }
 
-    private bool ButtonOneIsPushed()
+    private bool ButtonOneIsPushed(string tag)
     {
-        if (OVRInput.Get(OVRInput.Button.One))
+        if (tag == "PlayerLeft")
         {
-            return true;
+            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
+            {
+                return true;
+            }
+        }
+        else if (tag == "PlayerRight")
+        {
+            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
+            {
+                return true;
+            }
         }
         return false;
     }
@@ -58,10 +68,13 @@ public class VRButton : MonoBehaviour
                     }
                     break;
                 case FunctionType.TvButton:
-                    VRActions.TVButton(tvRemote, name);
+                    if (ButtonOneIsPushed(other.tag))
+                    {
+                        VRActions.TVButton(tvRemote, name);
+                    }
                     break;
                 case FunctionType.BoomboxButton:
-                    if (ButtonOneIsPushed())
+                    if (ButtonOneIsPushed(other.tag))
                     {
                         VRActions.BoomboxButton(boombox);
                     }

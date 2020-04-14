@@ -42,10 +42,7 @@ public class VRActions
 
     public static void TVButton(TvRemote tvRemote, string button)
     {
-        if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
-        {
-            tvRemote.ButtonPressed(button);
-        }
+        tvRemote.ButtonPressed(button);
     }
 
     public static void BoomboxButton(Boombox boombox)

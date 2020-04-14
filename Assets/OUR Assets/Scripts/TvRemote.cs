@@ -135,7 +135,6 @@ public class TvRemote : MonoBehaviour
         {
             Debug.Log("TV ON");
             tvOn = true;
-            tvDisplay.Play();
             tvShade.SetActive(false);
         }
     }

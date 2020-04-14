@@ -23,14 +23,11 @@ public class EnvironmentSetup : MonoBehaviour
     {
         OVRInput.Update();
 
-        if (OVRInput.IsControllerConnected(OVRInput.Controller.RTouch))
+        if (Environment.GetComponent<ModifyMode>().mode == ModifyMode.ModifyModes.Measurement) //(modify)
         {
-            if (true) //(modify)
-            {
-                SetFloorLevel();
-                SetRoomCorner();
-                //SetRoomRotation();
-            }
+            SetFloorLevel();
+            //SetRoomCorner();
+            //SetRoomRotation();
         }
     }
 

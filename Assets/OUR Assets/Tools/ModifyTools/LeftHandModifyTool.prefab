@@ -164,6 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2e9a05518cf2149b0b1eaa1f1098a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveTool: {fileID: 0}
+  styleTool: {fileID: 0}
+  measurementTool: {fileID: 0}
 --- !u!1 &529638236170052883
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +912,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2e9a05518cf2149b0b1eaa1f1098a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveTool: {fileID: 0}
+  styleTool: {fileID: 0}
+  measurementTool: {fileID: 0}
 --- !u!1 &3677425040807284061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,10 +2322,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8261406482333161804}
-  - component: {fileID: 3768376486072570315}
-  - component: {fileID: 7594982500603837640}
-  - component: {fileID: 2953953684134736555}
   - component: {fileID: 3422346198356002064}
+  - component: {fileID: 4210039321590314701}
   m_Layer: 0
   m_Name: MovementTool
   m_TagString: Untagged
@@ -2342,52 +2346,6 @@ Transform:
   m_Father: {fileID: 3296112444572365941}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -102.267, y: 93.67799, z: -86.32199}
---- !u!114 &3768376486072570315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6837521110227383071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886adc686bb34124281a4a8f7e9a6bb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7594982500603837640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6837521110227383071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whenToGrab: 0
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints: []
---- !u!54 &2953953684134736555
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6837521110227383071}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &3422346198356002064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2399,8 +2357,24 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1, z: 0.2}
-  m_Center: {x: 0.1, y: 0.1, z: -0.15}
+  m_Size: {x: 0.5, y: 0.125, z: 1.4}
+  m_Center: {x: 0.125, y: 0.125, z: 0.585}
+--- !u!114 &4210039321590314701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837521110227383071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2e9a05518cf2149b0b1eaa1f1098a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTool: {fileID: 7595127671116168902, guid: 03bacb90285b2524c8257debbcac0882,
+    type: 3}
+  styleTool: {fileID: 0}
+  measurementTool: {fileID: 0}
 --- !u!1 &6913526851245390880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886adc686bb34124281a4a8f7e9a6bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useInEnjoyMode: 0
+  objectTrigger: {fileID: 0}
+  shaft: {fileID: 0}
 --- !u!114 &6466105918152847835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2720,7 +2697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whenToGrab: 0
   m_allowOffhandGrab: 1
   m_snapPosition: 0
   m_snapOrientation: 0
@@ -2751,7 +2727,7 @@ BoxCollider:
   m_GameObject: {fileID: 7942437090314681868}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.1, z: 1.125}
   m_Center: {x: 0.1, y: 0.1, z: 0.7}
@@ -2767,6 +2743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2e9a05518cf2149b0b1eaa1f1098a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveTool: {fileID: 0}
+  styleTool: {fileID: 0}
+  measurementTool: {fileID: 0}
 --- !u!1 &8210352546077830689
 GameObject:
   m_ObjectHideFlags: 0

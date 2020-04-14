@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 4814841323498108271}
   - component: {fileID: 6381799112023725112}
   - component: {fileID: 2309147826021885525}
+  - component: {fileID: 6029357429758224295}
+  - component: {fileID: 5717610503366123156}
   m_Layer: 0
   m_Name: ObjectTrigger
-  m_TagString: Player
+  m_TagString: theClaw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2362670847000827838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.096, y: 0.080000006, z: 1.0896}
-  m_LocalScale: {x: 0.4, y: 0.20000002, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8500559137436490118}
   m_RootOrder: 8
@@ -91,8 +93,46 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 0.75}
-  m_Center: {x: 0, y: 0.1, z: 0.075}
+  m_Size: {x: 0.4, y: 0.15, z: 0.3}
+  m_Center: {x: 0, y: 0.025, z: 0}
+--- !u!54 &6029357429758224295
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362670847000827838}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!114 &5717610503366123156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362670847000827838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd425c2d06f39bf4899d07c05d0f10eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabBegin: 0.55
+  grabEnd: 0.35
+  m_parentHeldObject: 1
+  m_moveHandPosition: 0
+  m_gripTransform: {fileID: 411426825849482396}
+  m_grabVolumes:
+  - {fileID: 2309147826021885525}
+  m_controller: 2
+  m_parentTransform: {fileID: 4981817047015740565}
+  m_player: {fileID: 0}
 --- !u!1 &3215797258174659802
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,9 +607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8500559137436490118}
-  - component: {fileID: 3681009217629835521}
   - component: {fileID: 7942282985095904258}
-  - component: {fileID: 4305923390308019155}
   m_Layer: 0
   m_Name: MovementToolScale
   m_TagString: Untagged
@@ -585,7 +623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6466506242748576725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.292}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 6805159652527682741}
@@ -600,19 +638,6 @@ Transform:
   m_Father: {fileID: 4981817047015740565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3681009217629835521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6466506242748576725}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886adc686bb34124281a4a8f7e9a6bb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  theClaw: {fileID: 0}
 --- !u!114 &7942282985095904258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,24 +650,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whenToGrab: 0
   m_allowOffhandGrab: 1
   m_snapPosition: 0
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
---- !u!114 &4305923390308019155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6466506242748576725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a2e9a05518cf2149b0b1eaa1f1098a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7527020569168130553
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,7 +758,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4981817047015740565}
   - component: {fileID: 274551539148938258}
-  - component: {fileID: 6837129445258866961}
   - component: {fileID: 2268156564232126322}
   - component: {fileID: 1799765180664711369}
   m_Layer: 0
@@ -783,26 +794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886adc686bb34124281a4a8f7e9a6bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theClaw: {fileID: 2362670847000827838}
---- !u!114 &6837129445258866961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595127671116168902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whenToGrab: 0
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints:
-  - {fileID: 3885365346807545122}
+  objectTrigger: {fileID: 2362670847000827838}
+  shaft: {fileID: 7527020569168130553}
 --- !u!54 &2268156564232126322
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -815,7 +808,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -830,8 +823,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.1, z: 0.75}
-  m_Center: {x: 0.1, y: 0.1, z: 0.225}
+  m_Size: {x: 0.2, y: 0.1, z: 0.6}
+  m_Center: {x: 0.0825, y: 0.08, z: 0.4}
 --- !u!1 &8756871639381422878
 GameObject:
   m_ObjectHideFlags: 0
