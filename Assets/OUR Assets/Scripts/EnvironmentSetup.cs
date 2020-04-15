@@ -22,15 +22,16 @@ public class EnvironmentSetup : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         OVRInput.Update();
 
         if (Environment.GetComponent<ModifyMode>().mode == ModifyMode.ModifyModes.Measurement)
         {
-            SetFloorLevel();
-            //SetRoomCorner();
-            //SetRoomRotation();
+            if (modify)
+            {
+                InitRoom();
+            }
         }
     }
 
@@ -70,35 +71,13 @@ public class EnvironmentSetup : MonoBehaviour
         if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
         {
             Environment.transform.Rotate(0, Environment.transform.rotation.y - 0.5f, 0, Space.World);
+            Vector3 rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+            //set floor height
+            Environment.transform.position = new Vector3(Environment.transform.position.x, rPosition.y - 0.1f, Environment.transform.position.z);
         }
-        else if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
+        if(OVRInput.GetUp(OVRInput.Button.One))
         {
-            Environment.transform.Rotate(0, Environment.transform.rotation.y + 0.5f, 0, Space.World);
+            modify = false;
         }
-    }
-
-    void SetRoomCorner()
-    {
-        Vector3 lPosition = new Vector3(0, 0, 0);
-        Vector3 rPosition = new Vector3(0, 0, 0);
-        if (OVRInput.Get(OVRInput.Button.Four)) //Left Button B
-        {
-            lPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
-        }
-        if (OVRInput.Get(OVRInput.Button.Two)) //Right Button B
-        {
-            rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-        }
-        if (lPosition != new Vector3(0,0,0) && rPosition != new Vector3(0, 0, 0))
-        {
-            //set corner
-            //Environment.transform.position = new Vector3(lPosition.x + 0.05f, Environment.transform.position.y, rPosition.z - 0.05f);
-        }
-
-    }
-
-    void SpawnRoom(Vector3 pos)
-    {
-        Environment = Instantiate(Room, pos, Quaternion.identity) as GameObject;
     }
 }
