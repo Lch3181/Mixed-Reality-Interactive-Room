@@ -6,33 +6,14 @@ public class Drawing : MonoBehaviour
 {
     public Material color;
     public GameObject penSize;
-
-    private void Start()
-    {
-
-    }
+    public GameObject TargetBoard;
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.name == "WhiteBoard")
+        if(other.name == TargetBoard.name)
         {
             Instantiate(penSize, new Vector3(other.transform.position.x, penSize.transform.position.y, penSize.transform.position.z), Quaternion.identity);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.name == "WhiteBoard")
-        {
-            
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.name == "WhiteBoard")
-        {
-            
-        }
-    }
 }

@@ -52,6 +52,7 @@ public class EnvironmentSetup : MonoBehaviour
             }
             //set floor height
             Environment.transform.position = new Vector3(Environment.transform.position.x, rPosition.y - 0.1f, Environment.transform.position.z);
+            Environment.SetActive(true);
         }
         if(OVRInput.GetUp(OVRInput.Button.One))
         {
