@@ -4,55 +4,64 @@ using UnityEngine;
 
 public class MovementTool : MonoBehaviour
 {
-    [SerializeField]
-    bool useInEnjoyMode;
-    bool onHand = false;
-
+    Vector3 initPosit;
+    
     [SerializeField]
     GameObject objectTrigger;
     [SerializeField]
     GameObject shaft;
 
     Rigidbody rb;
+    Vector3 startPos;
+    ModifiableObject heldObject;
+
+    int buttonPresses = 0;
     
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (onHand)
+        transform.localPosition = new Vector3(-0.25f, -0.5f, -0.5f);
+
+        if (!OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
         {
-            transform.localPosition = new Vector3(-0.25f, -0.5f, -0.5f);
-        }
-        if (useInEnjoyMode && OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
-        {
-            onHand = false;
-            transform.parent = null;
-            rb.isKinematic = false;
-        }
-        else if (!useInEnjoyMode && OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
-        {
-            Destroy(this);
+            heldObject = null;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!onHand)
+        if (other.tag != "Player" && other.tag != "PlayerLeft" && other.tag != "PlayerRight")
         {
-            if (other.CompareTag("PlayerRight"))
+            if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
             {
-                if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+                if (heldObject == null)
                 {
-                    rb.isKinematic = true;
-                    transform.SetParent(other.transform);
-                    transform.localScale = Vector3.one * 4;
+                    heldObject = objectTrigger.GetComponent<OVRGrabber>().grabbedObject.GetComponent<ModifiableObject>();
+                }
+                if (buttonPresses == 0)
+                {
+                    heldObject.RotateObject();
+                    buttonPresses++;
                 }
             }
+            else
+            {
+                buttonPresses = 0;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        {
+            buttonPresses = 0;
         }
     }
 }

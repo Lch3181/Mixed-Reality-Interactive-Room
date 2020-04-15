@@ -88,7 +88,7 @@ public class TvRemote : MonoBehaviour
         }
         else if (name.Contains("StopButton"))
         {
-            tvDisplay.Stop();
+            tvDisplay.Pause();
         }
         else if (name.Contains("PauseButton"))
         {

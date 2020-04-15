@@ -6,6 +6,8 @@ public class ModifyTool : MonoBehaviour
 {
     ModifyMode mode;
 
+    GameObject objectInHand;
+
     [SerializeField]
     GameObject moveTool;
     [SerializeField]
@@ -14,18 +16,20 @@ public class ModifyTool : MonoBehaviour
     GameObject measurementTool;
 
     Vector3 defaultSize;
+    int tools;
 
     // Start is called before the first frame update
     void Start()
     {
         mode = FindObjectOfType<ModifyMode>();
         defaultSize = transform.localScale;
+        tools = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ToolHover()
@@ -52,10 +56,14 @@ public class ModifyTool : MonoBehaviour
         {
             if (name.Contains("MovementTool"))
             {
-                mode.MovementMode();
-                GameObject movementTool = Instantiate(moveTool, other.transform, false);
-                movementTool.transform.localScale = Vector3.one * 4;
-                //movementTool.transform.localPosition = new Vector3(-0.25f, -0.5f, -1);
+                if (tools == 0)
+                {
+                    mode.MovementMode(); 
+                    objectInHand = Instantiate(moveTool, other.transform, false);
+                    objectInHand.transform.localScale = Vector3.one * 4;
+                    //movementTool.transform.localPosition = new Vector3(-0.25f, -0.5f, -1);
+                }
+                tools++;
             }
             else if (name.Contains("StyleTool"))
             {
@@ -64,6 +72,11 @@ public class ModifyTool : MonoBehaviour
             else if (name.Contains("MeasurementTool"))
             {
                 mode.MeasurementMode();
+            }
+            else if (name.Contains("PutAway"))
+            {
+                mode.PutAway();
+                mode.DropTool(other.gameObject);
             }
         }
     }

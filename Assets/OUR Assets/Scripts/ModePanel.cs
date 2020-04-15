@@ -56,6 +56,5 @@ public class ModePanel : MonoBehaviour
             enjoyLed.material.color = Color.green;
             modifyLed.material.color = Color.black;
         }
-        FindObjectOfType<EnvironmentSetup>().ChangeMode(modify);
     }
 }

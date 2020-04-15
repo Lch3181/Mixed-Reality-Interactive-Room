@@ -86,7 +86,7 @@ public class VRLever : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight"))
+        if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight") || other.CompareTag("theClaw"))
         {
             onLever = true;
         }
@@ -94,7 +94,7 @@ public class VRLever : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight"))
+        if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight") || other.CompareTag("theClaw"))
         {
             handleMesh.material.color = Color.white;
             Vector3.Lerp(transform.position, initLeverPos, .5f);

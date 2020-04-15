@@ -52,12 +52,16 @@ public class VRButton : MonoBehaviour
                 return true;
             }
         }
+        else if (tag == "theClaw")
+        {
+            return true;
+        }
         return false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight") || other.CompareTag("Player"))
+        if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight") || other.CompareTag("theClaw"))
         {
             switch(functionType)
             {

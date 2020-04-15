@@ -7,7 +7,6 @@ public class EnvironmentSetup : MonoBehaviour
 {
     public GameObject Environment;
     public GameObject Room;
-    public bool modify = false;
     public Text cornerPosition;
     private bool RoomSpawned = false;
 
@@ -29,12 +28,6 @@ public class EnvironmentSetup : MonoBehaviour
             //SetRoomCorner();
             //SetRoomRotation();
         }
-    }
-
-    public void ChangeMode(bool modify)
-    {
-        this.modify = modify;
-        Debug.Log("modify=" + modify);
     }
 
     void SetFloorLevel()
