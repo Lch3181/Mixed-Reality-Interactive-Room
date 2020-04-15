@@ -26,7 +26,7 @@ public class EnvironmentSetup : MonoBehaviour
     {
         OVRInput.Update();
 
-        if (Environment.GetComponent<ModifyMode>().mode == ModifyMode.ModifyModes.Measurement) //(modify)
+        if (Environment.GetComponent<ModifyMode>().mode == ModifyMode.ModifyModes.Measurement)
         {
             SetFloorLevel();
             //SetRoomCorner();
@@ -34,6 +34,7 @@ public class EnvironmentSetup : MonoBehaviour
         }
     }
 
+    //When Button.One is pressed while in measurement mode, it will set the floor level
     void SetFloorLevel()
     {
         Vector3 rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
@@ -62,39 +63,6 @@ public class EnvironmentSetup : MonoBehaviour
         {
             count = 0;
         }
-
-
-        //if (OVRInput.Get(OVRInput.Button.One)) //Right Button A
-        //{
-        //    if (count == 0)
-        //    {
-        //        initPosit = transform.position.y;
-        //        initHandPosit = rPosition.y;
-        //        count++;
-        //    }
-        //    //set floor height
-        //    Vector3 newPosition = Environment.transform.position;
-        //    newPosition.y = initHandPosit + (rPosition.y - 0.1f);
-        //    if (newPosition.y < initPosit - 2)
-        //    {
-        //        newPosition.y = initPosit - 2;
-        //    }
-        //    else if (newPosition.y > initPosit + 2)
-        //    {
-        //        newPosition.y = initPosit + 2;
-        //    }
-        //    transform.position = newPosition;
-
-        //    spawn room on first time
-        //    if (!RoomSpawned)
-        //    {
-        //        SpawnRoom(new Vector3(rPosition.x, Environment.transform.position.y, rPosition.z));
-        //        RoomSpawned = true;
-        //    }
-        //}
-        //else
-        //{
-        //}
     }
 
     void SetRoomRotation()
