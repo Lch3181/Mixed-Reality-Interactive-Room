@@ -596,11 +596,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 711802270998993414}
     m_Modifications:
+    - target: {fileID: 3076011945831246366, guid: 9cd63312fcca9484780e6cab112a11d5,
+        type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3107563303894818976, guid: 9cd63312fcca9484780e6cab112a11d5,
         type: 3}
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 3108923815990814010, guid: 9cd63312fcca9484780e6cab112a11d5,
+        type: 3}
+      propertyPath: simLever
+      value: 
+      objectReference: {fileID: 4211811074610275436}
     - target: {fileID: 3113115674999093452, guid: 9cd63312fcca9484780e6cab112a11d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -661,7 +671,8 @@ PrefabInstance:
       propertyPath: simLever
       value: 
       objectReference: {fileID: 4211811074610275436}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3027488046530534636, guid: 9cd63312fcca9484780e6cab112a11d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9cd63312fcca9484780e6cab112a11d5, type: 3}
 --- !u!4 &2659703512378053283 stripped
 Transform:

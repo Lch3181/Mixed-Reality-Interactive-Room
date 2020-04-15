@@ -6,9 +6,10 @@ MonoImporter:
   defaultReferences:
   - moveTool: {fileID: 9021339914554906886, guid: 71215e220ac043a4bb4d302a46bb8ad1,
       type: 3}
-  - styleTool: {fileID: 1147928560780453237, guid: 9a11a38e17772fb46973670dd4c45ea4,
+  - remoteTool: {fileID: 5685814461127414634, guid: de81ce6865d0b454a924f24a8d0cc6ed,
       type: 3}
-  - measurementTool: {instanceID: 0}
+  - measurementTool: {fileID: 1147928560780453237, guid: 0ad142097b8265d4f9506f0d855a3947,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

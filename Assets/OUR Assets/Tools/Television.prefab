@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5223602371204626495
 Transform:
   m_ObjectHideFlags: 0
@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 1269019311846772736}
   - component: {fileID: 4786263283022015596}
   - component: {fileID: 8350193523486110660}
+  - component: {fileID: 2475448787682866370}
   m_Layer: 0
   m_Name: Television
   m_TagString: Untagged
@@ -398,3 +399,17 @@ VideoPlayer:
   m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
+--- !u!114 &2475448787682866370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306009993091960706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891af4b0eb441274fb2e8a57f8ab8ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tv: {fileID: 2475448787682866370}
+  tvShade: {fileID: 900214515366459059}

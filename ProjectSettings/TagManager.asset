@@ -8,6 +8,8 @@ TagManager:
   - PlayerLeft
   - PlayerRight
   - theClaw
+  - furniture
+  - television
   layers:
   - Default
   - TransparentFX

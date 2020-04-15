@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ModifyMode : MonoBehaviour
 {
-    public enum ModifyModes { None, Movement, Style, Measurement }
+    public enum ModifyModes { None, Movement, Remote, Measurement }
     public ModifyModes mode = ModifyModes.None;
 
     public GameObject toolInHand;
@@ -16,6 +16,11 @@ public class ModifyMode : MonoBehaviour
 
     [SerializeField]
     GameObject LeftHandToolSelector;
+
+    [SerializeField]
+    GameObject tvScreen;
+    [SerializeField]
+    GameObject tvShade;
 
     GameObject LeftHandModifyTool;
 
@@ -31,11 +36,6 @@ public class ModifyMode : MonoBehaviour
         OpenLeftHandTools();
     }
 
-    public void PutAway()
-    {
-
-    }
-
     public void DropTool(GameObject hand)
     {
         try
@@ -48,7 +48,7 @@ public class ModifyMode : MonoBehaviour
 
     private void OpenLeftHandTools()
     {
-        if (OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch))
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch))
         {
             if (LeftHandModifyTool == null)
             {
@@ -74,9 +74,9 @@ public class ModifyMode : MonoBehaviour
         PlayerPrefs.SetInt("mode", 1);
     }
 
-    public void StyleMode()
+    public void RemoteMode()
     {
-        mode = ModifyModes.Style;
+        mode = ModifyModes.Remote;
         PlayerPrefs.SetInt("mode", 2);
     }
 

@@ -26,7 +26,6 @@ public class Boombox : MonoBehaviour
 
     public void RadioPower()
     {
-        Debug.Log(radioOn);
         if (radioOn)
         {
             radio.Pause();

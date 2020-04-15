@@ -11,7 +11,7 @@ public class ModifyTool : MonoBehaviour
     [SerializeField]
     GameObject moveTool;
     [SerializeField]
-    GameObject styleTool;
+    GameObject remoteTool;
     [SerializeField]
     GameObject measurementTool;
 
@@ -58,24 +58,34 @@ public class ModifyTool : MonoBehaviour
             {
                 if (tools == 0)
                 {
+                    mode.DropTool(other.gameObject);
                     mode.MovementMode(); 
                     objectInHand = Instantiate(moveTool, other.transform, false);
-                    objectInHand.transform.localScale = Vector3.one * 4;
-                    //movementTool.transform.localPosition = new Vector3(-0.25f, -0.5f, -1);
                 }
                 tools++;
             }
-            else if (name.Contains("StyleTool"))
+            else if (name.Contains("TVRemote"))
             {
-                mode.StyleMode();
+                if (tools == 0)
+                {
+                    mode.DropTool(other.gameObject);
+                    mode.RemoteMode();
+                    objectInHand = Instantiate(remoteTool, other.transform, false);
+                }
+                tools++;
             }
             else if (name.Contains("MeasurementTool"))
             {
-                mode.MeasurementMode();
+                if (tools == 0)
+                {
+                    mode.DropTool(other.gameObject);
+                    mode.MeasurementMode();
+                    objectInHand = Instantiate(measurementTool, other.transform, false);
+                }
+                tools++;
             }
             else if (name.Contains("PutAway"))
             {
-                mode.PutAway();
                 mode.DropTool(other.gameObject);
             }
         }
