@@ -23,18 +23,6 @@ public class VRActions
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
-    public static void ChangeMode(ModePanel modePanel, string name)
-    {
-        if (name == "Modify")
-        {
-            modePanel.ChooseModify();
-        }
-        else if (name == "Enjoy")
-        {
-            modePanel.ChooseEnjoy();
-        }
-    }
-
     public static void ActivateMode(ModePanel modePanel)
     {
         modePanel.Activate();

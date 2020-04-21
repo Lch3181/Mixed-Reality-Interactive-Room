@@ -78,11 +78,15 @@ public class TvRemote : MonoBehaviour
         {
             tv.PowerOff();
             tvOn = false;
+
+            tvDisplay.Stop();
         }
         else
         {
             tv.PowerOn();
             tvOn = true;
+
+            tvDisplay.Play();
         }
     }
 }

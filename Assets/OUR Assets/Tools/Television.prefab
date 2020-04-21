@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 1605555491694333105}
   - component: {fileID: 3789989082357559148}
   m_Layer: 0
-  m_Name: TVChannel1
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

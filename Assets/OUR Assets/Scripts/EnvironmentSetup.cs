@@ -28,10 +28,7 @@ public class EnvironmentSetup : MonoBehaviour
 
         if (Environment.GetComponent<ModifyMode>().mode == ModifyMode.ModifyModes.Measurement)
         {
-            if (modify)
-            {
-                InitRoom();
-            }
+            SetFloorLevel();
         }
     }
 
@@ -63,21 +60,6 @@ public class EnvironmentSetup : MonoBehaviour
         else
         {
             count = 0;
-        }
-    }
-
-    void SetRoomRotation()
-    {
-        if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
-        {
-            Environment.transform.Rotate(0, Environment.transform.rotation.y - 0.5f, 0, Space.World);
-            Vector3 rPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-            //set floor height
-            Environment.transform.position = new Vector3(Environment.transform.position.x, rPosition.y - 0.1f, Environment.transform.position.z);
-        }
-        if(OVRInput.GetUp(OVRInput.Button.One))
-        {
-            modify = false;
         }
     }
 }

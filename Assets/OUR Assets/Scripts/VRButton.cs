@@ -16,7 +16,7 @@ public class VRButton : MonoBehaviour
     [SerializeField]
     ModePanel modePanel;
 
-    public enum FunctionType { ResetScene, TvButton, BoomboxButton, ModePanel }
+    public enum FunctionType { ResetScene, TvButton, BoomboxButton }
     public FunctionType functionType = FunctionType.ResetScene;
 
     //check if lever is pulled if one exists
@@ -82,9 +82,6 @@ public class VRButton : MonoBehaviour
                     {
                         VRActions.BoomboxButton(boombox);
                     }
-                    break;
-                case FunctionType.ModePanel:
-                    VRActions.ChangeMode(modePanel, name);
                     break;
             }
         }
