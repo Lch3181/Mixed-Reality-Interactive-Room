@@ -16,7 +16,7 @@ public class VRButton : MonoBehaviour
     [SerializeField]
     ModePanel modePanel;
 
-    public enum FunctionType { ResetScene, TvButton, BoomboxButton }
+    public enum FunctionType { ResetScene, TvButton, BoomboxButton, PrestonsRoom, Lobby }
     public FunctionType functionType = FunctionType.ResetScene;
 
     //check if lever is pulled if one exists
@@ -81,6 +81,18 @@ public class VRButton : MonoBehaviour
                     if (ButtonOneIsPushed(other.tag))
                     {
                         VRActions.BoomboxButton(boombox);
+                    }
+                    break;
+                case FunctionType.PrestonsRoom:
+                    if (LeverIsPulled(simLever))
+                    {
+                        VRActions.GoToPrestonsRoom();
+                    }
+                    break;
+                case FunctionType.Lobby:
+                    if (LeverIsPulled(simLever))
+                    {
+                        VRActions.GoToLobby();
                     }
                     break;
             }

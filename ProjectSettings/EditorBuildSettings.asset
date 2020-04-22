@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PrestonsRoom.unity
+    guid: c60e6f3c79131cb4cbc79f4f22a8187d
+  - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 8380e8b7d2d789f4cb4b3c49380d994e
   m_configObjects: {}

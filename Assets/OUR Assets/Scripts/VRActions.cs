@@ -23,6 +23,16 @@ public class VRActions
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
+    public static void GoToPrestonsRoom()
+    {
+        SceneManager.LoadScene("PrestonsRoom", LoadSceneMode.Single);
+    }
+
+    public static void GoToLobby()
+    {
+        SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
+    }
+
     public static void ActivateMode(ModePanel modePanel)
     {
         modePanel.Activate();
