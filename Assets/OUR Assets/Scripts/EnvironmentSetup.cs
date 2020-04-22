@@ -7,9 +7,6 @@ public class EnvironmentSetup : MonoBehaviour
 {
     public GameObject Environment;
     public GameObject Floor;
-    public GameObject Room;
-    public Text cornerPosition;
-    private bool RoomSpawned = false;
 
     private float initPosit;
     private float initHandPosit;
