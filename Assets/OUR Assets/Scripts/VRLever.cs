@@ -23,7 +23,7 @@ public class VRLever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initLeverPos = transform.position;
+        initLeverPos = transform.localPosition;
         handleMesh = handle.GetComponent<MeshRenderer>();
     }
 
@@ -79,7 +79,7 @@ public class VRLever : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, initLeverPos, 0.5f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, initLeverPos, 0.5f);
             handleMesh.material.color = Color.white;
         }
     }
@@ -97,7 +97,7 @@ public class VRLever : MonoBehaviour
         if (other.CompareTag("PlayerLeft") || other.CompareTag("PlayerRight") || other.CompareTag("theClaw"))
         {
             handleMesh.material.color = Color.white;
-            Vector3.Lerp(transform.position, initLeverPos, .5f);
+            Vector3.Lerp(transform.localPosition, initLeverPos, .5f);
             onLever = false;
             pullingLever = false;
             leverPulled = false;
@@ -106,7 +106,7 @@ public class VRLever : MonoBehaviour
 
     private void MoveLever(OVRInput.Controller hand)
     {
-        Vector3 newPosition = transform.position;
+        Vector3 newPosition = transform.localPosition;
         newPosition.y = initLeverPos.y - (initHandPos.y - OVRInput.GetLocalControllerPosition(hand).y);
         if (newPosition.y <= initLeverPos.y - 0.2f)
         {
@@ -118,6 +118,6 @@ public class VRLever : MonoBehaviour
         {
             newPosition.y = initLeverPos.y;
         }
-        transform.position = newPosition;
+        transform.localPosition = newPosition;
     }
 }

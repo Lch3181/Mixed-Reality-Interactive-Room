@@ -4444,7 +4444,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7572707400318600870}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -4735,7 +4735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7981073431825724496}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0148, y: -0.0005334268, z: 0.031}
+  m_LocalPosition: {x: -0.024, y: -0.015, z: 0.008}
   m_LocalScale: {x: 0.06666667, y: 0.06666668, z: 0.013333333}
   m_Children: []
   m_Father: {fileID: 4797007512620383676}
@@ -4788,14 +4788,14 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7981073431825724496}
-  m_Text: "\u25A0"
+  m_Text: MUTE
   m_OffsetZ: 0
   m_CharacterSize: 0.075
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 100
+  m_FontSize: 35
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}

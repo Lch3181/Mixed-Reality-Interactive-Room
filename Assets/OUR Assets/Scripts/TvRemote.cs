@@ -51,6 +51,10 @@ public class TvRemote : MonoBehaviour
         {
             tvDisplay.Pause();
         }
+        else if (name.Contains("MuteButton"))
+        {
+            tvSpeakers.mute = !tvSpeakers.mute;
+        }
         else if (name.Contains("PauseButton"))
         {
             tvDisplay.Pause();

@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 785507368087910827}
   - component: {fileID: 6254101972011771597}
   m_Layer: 0
-  m_Name: StopButton
+  m_Name: MuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,7 +826,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5276567518353570852}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0148, y: -0.0005334268, z: 0.031}
+  m_LocalPosition: {x: -0.025, y: -0.0005334268, z: 0.007}
   m_LocalScale: {x: 0.06666667, y: 0.06666668, z: 0.013333333}
   m_Children: []
   m_Father: {fileID: 7307722449172149704}
@@ -879,14 +879,14 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5276567518353570852}
-  m_Text: "\u25A0"
+  m_Text: MUTE
   m_OffsetZ: 0
   m_CharacterSize: 0.075
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 100
+  m_FontSize: 35
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1750,7 +1750,7 @@ GameObject:
   - component: {fileID: 146062484796832036}
   - component: {fileID: 4829013885667284033}
   m_Layer: 0
-  m_Name: StopButton
+  m_Name: MuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
